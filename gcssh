@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+set -o nounset
+
+PROJECT=$1
+TAG=$2
+
+echo "Looking for instances tagged [${TAG}] in [${PROJECT}]..."
+HOSTLIST=$(gcloud compute instances list --project=${PROJECT} --format="value[terminator=' '](networkInterfaces[0].networkIP)" --filter="tags:${TAG}")
+echo "Found: ${HOSTLIST}"
+
+cssh --options='-o UserKnownHostsFile=/dev/null' -f10x20 ${HOSTLIST}
