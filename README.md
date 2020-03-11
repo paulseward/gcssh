@@ -3,6 +3,3 @@
 Terrible, dirty wrapper for Cluster SSH which uses tags in GCP to decide what to ssh to.
 
 I feel dirty every time I use this, but sometimes it's incredibly useful.
-
-## TODO
-* (optionally?) make `cssh` use `gcloud compute ssh` instead of SSH to allow for IAP tunnelling
